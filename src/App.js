@@ -1,19 +1,17 @@
-import './App.css';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './assets/app.scss';
+import Main from './pages/home/home';
+
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <div class='alert alert-primary' role='alert'>
-          <p style={{ display: "none" }} className='d-block'>
-            Bootstrap is now successfully installed 😃
-          </p>
-          <p className='d-none'>
-            Bootstrap is not installed if you can see this 😢
-          </p>
-        </div>
-      </header>
-    </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Main />} />
+        </Routes>
+      </Router>
   );
 }
 
