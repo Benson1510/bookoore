@@ -1,0 +1,16 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+$primary : #6f42c1;
+$toto: #ffffff;
+
+$theme-colors: map-merge(
+    $theme-colors,
+    (
+        "primary": $primary
+        "toto": $toto
+    )
+);
+
+@import "node_modules/bootstrap/scss/boostrap";
+
