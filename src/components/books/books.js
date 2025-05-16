@@ -73,7 +73,7 @@ export default function Books() {
     };
 
     return (
-        <section className="d-flex align-items-center py-2 my-2">
+        <section className="d-flex align-items-center pb-2 mb-2">
             <div className="container-fluid">
                 <div className="row d-flex mx-4 justify-content-between">
                     {/* Colonne des filtres */}
