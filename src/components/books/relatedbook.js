@@ -86,23 +86,3 @@ const RelatedBooks = () => {
 };
 
 export default RelatedBooks;
-
-
-/*
-.btn-details-reverse {
-    color: $primary;
-    width: 200px;
-    height: 60px;
-    font-size: 1rem;
-    font-weight: 700;
-    background: $white;
-    border: none;
-    display: flex;
-    align-items: start;
-    justify-content: start;
-
-    i {
-        margin-right: 5px;
-    }
-}
-*/
