@@ -968,10 +968,21 @@ $category-colors: (
     }
 }
 
+
+.popular-books {
+
+    background: url('./images/popular.png');
+    
+}
+
 .recommended-books {
 
-    background: url('./images/recomemended.png');
-    
+    background: url('./images/recommended.png') center/cover no-repeat;
+
+}
+
+.recommended-books-2 {
+    background: url('./images/recommended-2.png') center/cover no-repeat;
 }
 
 checkout-page {

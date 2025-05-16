@@ -74,8 +74,8 @@ export default function Books() {
 
     return (
         <section className="d-flex align-items-center pb-2 mb-2">
-            <div className="container-fluid">
-                <div className="row d-flex mx-4 justify-content-between">
+            <div className="container-fluid px-5">
+                <div className="row d-flex  justify-content-between">
                     {/* Colonne des filtres */}
                     <div className="col-md-3">
                         <div className="filter-option">

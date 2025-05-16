@@ -3,6 +3,8 @@ import StoreNumbers from "../../assets/images/storeNumbers.png";
 import Newsletters from "../../components/layout/newsletters";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Countdown from 'react-countdown';
+import BookOnSales from '../../components/layout/bookonsales';
+import Features from '../../components/layout/features';
 
 const BookCard = ({ book, onAddToCart, inCart }) => {
   const { id, image, title, author, description, currentPrice, originalPrice } = book;
@@ -243,36 +245,34 @@ export default function Main() {
   return (
     <main className="main-container">
 
-      <div className="container mt-3">
-        <div className="row justify-content-center">
-          <article className="col-lg-8">
+      <div className="container-fluid d-flex justify-content-center px-5 mt-3">
+        <div className="row justify-content-center col-12">
+          <div className="col-lg-9">
             <section className="hero-banner" aria-labelledby="hero-heading">
               <header className="hero-heading">
-                <div className="col-lg-8">
-                  <div className="hero-content">
-                    <div className="hero-content text-lg-start text-center">
-                      <h4>BACK TO SCHOOL</h4>
-                      <h1 id="hero-heading">Special 50% Off</h1>
-                      <h3>for our student community</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua.
-                      </p>
-                    </div>
-
-                    <nav className="hero-buttons">
-                      <button className="btn btn-primary me-2">
-                        Get the deal <i className="bi bi-arrow-right me-1"></i>
-                      </button>
-                      <button className="btn btn-primary- me-2">See other promos</button>
-                    </nav>
+                <div className="hero-content col-lg-8">
+                  <div className="hero-content text-lg-start text-center">
+                    <h4>BACK TO SCHOOL</h4>
+                    <h1 id="hero-heading">Special 50% Off</h1>
+                    <h3>for our student community</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
+                      incididunt ut labore et dolore magna aliqua.
+                    </p>
                   </div>
+
+                  <nav className="hero-buttons">
+                    <button className="btn btn-primary me-2">
+                      Get the deal <i className="bi bi-arrow-right me-1"></i>
+                    </button>
+                    <button className="btn btn-primary- me-2">See other promos</button>
+                  </nav>
                 </div>
               </header>
             </section>
-          </article>
+          </div>
 
-          <aside className="col-lg-4">
+          <aside className="col-lg-3">
             <section className="side-banner">
               <article className="side-content">
                 <div className="book-card">
@@ -299,15 +299,17 @@ export default function Main() {
         </div>
       </div>
 
-      <section className="recommanded-books">
-      <div className="container mt-5">
+    <Features currentPage={"books"}/>
+
+      <div className="container-fluid px-5 mt-3">
         <div className="row">
           {/* Recommended Books */}
+
           <div className="col-md-6 mb-4">
-            <article className="bg-white p-4 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
-              <header className="mb-4">
-                <h3 className="recommanded-title">Recommended For You</h3>
-                <p className="recommanded-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div className="rounded-4 px-3 shadow-sm h-100 d-flex flex-column justify-content-between recommended-books">
+              <header className="mb-4 ">
+                <h2 className="recommanded-title mb-1 pt-3">Recommended For You</h2>
+                <p className="recommanded-description pt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               </header>
 
               <div className="d-flex align-items-center position-relative">
@@ -319,18 +321,18 @@ export default function Main() {
                   <i className="bi bi-chevron-left"></i>
                 </button>
 
-                <div className="flex-grow-1" style={{ overflow: 'hidden' }}>
-                  <ul 
-              className="d-flex gap-3 list-unstyled m-0 p-0 recommended-list"
-              style={{
-                overflowX: 'scroll',
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',  
-                '&::-webkit-scrollbar': {  
-                  display: 'none'
-                }
-              }}
-            >
+                <div className="flex-grow-1" style={{ overflowX: 'auto' }}>
+                  <ul
+                    className="d-flex gap-3 list-unstyled m-0 p-0 recommended-list"
+                    style={{
+                      display: 'flex',
+                      gap: '1rem',
+                      overflow: 'hidden',      
+                      overflowX: 'auto',       
+                      scrollbarWidth: 'none',  
+                      msOverflowStyle: 'none'
+                    }}
+                  >
                     {recommendedBooks.map((book, index) => (
                       <li key={index} style={{ flex: '0 0 auto', width: '120px', height: '170px' }}>
                         <img
@@ -351,40 +353,37 @@ export default function Main() {
                 >
                   <i className="bi bi-chevron-right"></i>
                 </button>
+              </div>
+            </div>
           </div>
-        </article>
-      </div>
-
-
-          {/* Popular Books */}
-        <section className="popular-books">
-          <div className="col-md-6 mb-4">
-            <article className="bg-white p-4 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
-              <header className="mb-4">
-                <h3 className="popular-title">Popular in 2020</h3>
-                <p className="popular-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div className="col-md-6 mb-4">
+            <div className="rounded-4 px-3 shadow-sm h-100 d-flex flex-column justify-content-between recommended-books-2">
+              <header className="mb-4 ">
+                <h2 className="recommanded-title mb-1 pt-3">Popular in 2025</h2>
+                <p className="recommanded-description pt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               </header>
 
               <div className="d-flex align-items-center position-relative">
                 <button
                   className="btn btn-light shadow-sm rounded-circle me-2"
                   onClick={() => scroll('left', '.popular-list')}
-                  aria-label="Scroll left Popular books"
+                  aria-label="Scroll left Recommended books"
                 >
                   <i className="bi bi-chevron-left"></i>
                 </button>
 
-                <div className="flex-grow-1" style={{ overflow: 'hidden' }}>
-                  <ul 
-              className="d-flex gap-3 list-unstyled m-0 p-0 popular-list"
-              style={{
-                overflowX: 'scroll',
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',  
-                '&::-webkit-scrollbar': {  
-                  display: 'none'
-                }
-              }}>
+                <div className="flex-grow-1" style={{ overflowX: 'auto' }}>
+                  <ul
+                    className="d-flex gap-3 list-unstyled m-0 p-0 popular-list"
+                    style={{
+                      display: 'flex',
+                      gap: '1rem',
+                      overflow: 'hidden',      
+                      overflowX: 'auto',       
+                      scrollbarWidth: 'none',  
+                      msOverflowStyle: 'none'
+                    }}
+                  >
                     {popularBooks.map((book, index) => (
                       <li key={index} style={{ flex: '0 0 auto', width: '120px', height: '170px' }}>
                         <img
@@ -401,24 +400,23 @@ export default function Main() {
                 <button
                   className="btn btn-light shadow-sm rounded-circle ms-2"
                   onClick={() => scroll('right', '.popular-list')}
-                  aria-label="Scroll right Popular books"
+                  aria-label="Scroll right Recommended books"
                 >
                   <i className="bi bi-chevron-right"></i>
-                     </button>
-                 </div>
-              </article>
+                </button>
+              </div>
             </div>
-          </section>
           </div>
         </div>
-      </section>
-      
+      </div>
+
 
       <SpecialOffers />
       <FlashSale />
-        <div className="d-flex justify-content-center my-4 py-1 store-numbers">
-          <img src={StoreNumbers} className="img-fluid" alt=""></img>
-        </div>
+      <BookOnSales />
+      <div className="d-flex justify-content-center my-4 py-1 store-numbers">
+        <img src={StoreNumbers} className="img-fluid" alt=""></img>
+      </div>
       <Newsletters />
     </main>
   );
