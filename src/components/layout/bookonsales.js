@@ -107,7 +107,7 @@ export default function BookOnSales() {
     const visibleItems = ImageSlider.slice(startIndex, startIndex + itemsPerPage);
 
     return (
-        <div className="container-fluid col-10 pt-3">
+        <div className="container-fluid col-10 pt-1">
             <div className="d-flex p-2 justify-content-between align-items-center mt-4">
                 <h2 className="fw-bold mb-0 ">Books on Sale</h2>
                 <div className="d-flex gap-2 align-items-center">

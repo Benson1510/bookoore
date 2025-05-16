@@ -15,7 +15,7 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    
+
     // ici je supprime l'evenement
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -30,7 +30,7 @@ const Navbar = () => {
     };
 
     document.addEventListener('click', handleClickOutside);
-    
+
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
@@ -50,9 +50,9 @@ const Navbar = () => {
             </div>
           </a>
 
-          <button 
-            className="navbar-toggler" 
-            type="button" 
+          <button
+            className="navbar-toggler"
+            type="button"
             onClick={() => setIsExpanded(!isExpanded)}
             aria-controls="navbarContent"
             aria-expanded={isExpanded}
@@ -61,8 +61,8 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div 
-            className={`collapse navbar-collapse ${isExpanded ? 'show' : ''}`} 
+          <div
+            className={`collapse navbar-collapse ${isExpanded ? 'show' : ''}`}
             id="navbarContent"
           >
             <div className="mx-auto nav">
@@ -79,11 +79,14 @@ const Navbar = () => {
                   <BsGrid className="menu-icon" aria-hidden="true" />
                   <span className="ms-2">Menus</span>
                 </button>
-                
-                <ul 
+
+                <ul
                   className={`dropdown-menu ${isMenuOpen ? 'show' : ''}`}
                   aria-labelledby="menuDropdown"
                 >
+                  <li><a className="dropdown-item" href="/books">Books</a></li>
+                  <li><a className="dropdown-item" href="/books-details">Books Details</a></li>
+                  <li><a className="dropdown-item" href="/checkout">Checkout</a></li>
                   <li><a className="dropdown-item" href="#fiction">Fiction</a></li>
                   <li><a className="dropdown-item" href="#non-fiction">Non-Fiction</a></li>
                   <li><a className="dropdown-item" href="#children">Children's Books</a></li>
@@ -91,7 +94,7 @@ const Navbar = () => {
                   <li><a className="dropdown-item" href="#new-releases">New Releases</a></li>
                 </ul>
               </div>
-              
+
               <form className="d-flex search-form" role="search">
                 <div className="input-group">
                   <input
@@ -106,7 +109,7 @@ const Navbar = () => {
                 </div>
               </form>
             </div>
-            
+
             <div className="nav auth-buttons">
               <a href="#login" className="btn btn-outline-primary log-in-btn me-2">Log In</a>
               <a href="#signup" className="btn btn-primary sign-up-btn">

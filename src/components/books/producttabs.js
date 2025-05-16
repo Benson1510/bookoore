@@ -156,15 +156,5 @@ export default function ProductTabs() {
 
 
 /*
-.recommanded-books {
 
-    background: url('./images/recommended.png');
-    
-}
-
-.popular-books {
-
-    background: url('./images/popular.png');
-    
-}
  */
