@@ -162,8 +162,8 @@ export default function BookDetails() {
                 {/* Customer Reviews */}
                 <br />
                 <div className="row my-3 justify-content-start">
-                    <div className="col-9"><ProductTabs /></div>
-                    <div className="col-3"><RelatedBooks /></div>
+                    <div className="col-8"><ProductTabs /></div>
+                    <div className="col-4"><RelatedBooks /></div>
                 </div>
             </div>
         </section>

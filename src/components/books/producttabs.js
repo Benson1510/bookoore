@@ -18,11 +18,13 @@ export default function ProductTabs() {
     ],
     reviews: [
       {
+        avatar: "https://img.freepik.com/photos-gratuite/casual-jeune-homme-africain-souriant-isole-blanc_93675-128895.jpg?semt=ais_hybrid&w=740",
         user: "John Smith",
         rating: 5,
         comment: "Un chef-d'œuvre terrifiant et palpitant !",
       },
       {
+        avatar: "https://img.freepik.com/photos-gratuite/casual-jeune-homme-africain-souriant-isole-blanc_93675-128895.jpg?semt=ais_hybrid&w=740",
         user: "Alice Brown",
         rating: 4,
         comment: "Très bien écrit, avec une atmosphère immersive.",
@@ -115,22 +117,45 @@ export default function ProductTabs() {
       )}
 
       {activeTab === "reviews" && (
-        <div className="list-group">
-          {book.reviews.map((review, idx) => (
-            <div
-              key={idx}
-              className="list-group-item d-flex flex-column gap-2 px-0"
-            >
-              <div className="d-flex justify-content-between align-items-center px-3">
-                <strong>{review.user}</strong>
-                <div className="details-rating">
-                  {"★".repeat(review.rating)}
-                  {"☆".repeat(5 - review.rating)}
+        <div className="row gx-0 tabs-text">
+          <div className="col-md-10 px-0">
+            <div className="list-group">
+              {book.reviews.map((review, idx) => (
+                <div key={idx} className="row list-group-item d-flex flex-column gap-2 px-0">
+                  <div className="row">
+                    <div className="col-6 px-3">
+                      <img src={review.avatar} alt={review.user} className="" style={{ width: "50px", height: "50px" }} />
+                    </div>
+                    <div className="col-6 justify-content-start">
+                      <p><strong>{review.user}</strong></p>
+                      <p>Jan 4th, 2020</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-12">
+                      <p className="mb-0 px-3">{review.comment}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <p className="mb-0 px-3">{review.comment}</p>
+              ))}
             </div>
-          ))}
+          </div>
+          <div className="col-md-2 px-0">
+            <div className="list-group">
+              {book.reviews.map((review, idx) => (
+                <div key={idx} className="list-group-item d-flex flex-column gap-2 px-0">
+                  <div className="d-flex align-items-center px-3">
+                    <div className="col-md-2 px-0">
+                      <div className="details-rating">
+                        {"★".repeat(review.rating)}
+                        {"☆".repeat(5 - review.rating)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </div>
