@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "icon": "bi-lightning-fill",
+    "title": "Quick Delivery",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "pages": ["books"]
+  },
+  {
+    "id": 2,
+    "icon": "bi-shield-fill-check",
+    "title": "Secure Payment",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "pages": ["books"]
+  },
+  {
+    "id": 3,
+    "icon": "bi-hand-thumbs-up-fill",
+    "title": "Best Quality",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "pages": ["books"]
+  },
+  {
+    "id": 4,
+    "icon": "bi-star-fill",
+    "title": "Return Guarantee",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "pages": ["books"]
+  }
+]
