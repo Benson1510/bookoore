@@ -35,14 +35,14 @@ const books = [
 
 const RelatedBooks = () => {
     return (
-        <div className="col-span-4 px-4">
-            <h2 className="text-xl font-semibold mb-4">Related Books</h2>
+        <div className="container-fluid py-2 mt-4">
+            <h2 className="text-xl font-semibold mb-4 tags-title-text">Related Books</h2>
 
             <div className="space-y-4">
                 {books.map((book) => (
-                    <div key={book.id} className="flex items-start gap-4">
+                    <div key={book.id} className="row col-12">
                         {/* Image à gauche */}
-                        <div className="w-20 h-28 rounded-md overflow-hidden bg-gray-200 flex-shrink-0">
+                        <div className="col-md-5 px-0 py-3">
                             <img
                                 src={book.url}
                                 alt={book.title}
@@ -52,30 +52,30 @@ const RelatedBooks = () => {
                         </div>
 
                         {/* Détails à droite */}
-                        <div className="flex-1">
-                            <h3 className="font-semibold text-base">{book.title}</h3>
-                            <p className="text-xs text-purple-600 uppercase tracking-wide mb-1">
+                        <div className="col-md-7 px-0 py-3">
+                            <h3 className="font-semibold text-base" id="bookonsales-title">{book.title}</h3>
+                            <p className="text-xs text-purple-600 uppercase tracking-wide mb-1" id="bookonsales-description">
                                 {book.genres}
                             </p>
                             <div className="flex items-center text-sm mb-1">
-                                <span className="text-orange-500 mr-1">★</span>
-                                <span>{book.rating}</span>
-                                <span className="text-gray-500 ml-1">({book.reviews} reviews)</span>
+                                <span className="text-orange-500 mr-1" id="bookonsales-note">★</span>
+                                <span id="bookonsales-note">{book.rating}</span>
+                                <span className="text-muted small mx-1">({book.reviews} reviews)</span>
                             </div>
                             <div className="flex items-center space-x-2 mb-2">
                                 <span className="text-base font-semibold">${book.price}</span>
-                                <span className="text-gray-400 line-through text-sm">${book.oldPrice}</span>
+                                <span className="text-muted text-decoration-line-through small mx-1">${book.oldPrice}</span>
                             </div>
-                            <button className="text-sm text-blue-600 hover:underline flex items-center">
-                                🛒 Add to Cart
+                            <button className="btn-details-reverse btn-primary mx-1">
+                                <strong><i className="bi bi-cart text-primary"></i></strong>  Add to Cart
                             </button>
                         </div>
                     </div>
                 ))}
             </div>
 
-            <div className="mt-6 text-center">
-                <list className="list-unstyled px-2 text-center">
+            <div className="text-center col-12 w-100%">
+                <list className="row list-unstyled text-center">
                     <button className="btn btn-purple btn-sm ">
                         <i id="view-more" /> View More
                     </button>
@@ -86,3 +86,23 @@ const RelatedBooks = () => {
 };
 
 export default RelatedBooks;
+
+
+/*
+.btn-details-reverse {
+    color: $primary;
+    width: 200px;
+    height: 60px;
+    font-size: 1rem;
+    font-weight: 700;
+    background: $white;
+    border: none;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+
+    i {
+        margin-right: 5px;
+    }
+}
+*/
