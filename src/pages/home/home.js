@@ -264,7 +264,7 @@ export default function Main() {
                       <button className="btn btn-primary me-2">
                         Get the deal <i className="bi bi-arrow-right me-1"></i>
                       </button>
-                      <button className="btn btn-outline-light">See other promos</button>
+                      <button className="btn btn-primary- me-2">See other promos</button>
                     </nav>
                   </div>
                 </div>
@@ -299,14 +299,15 @@ export default function Main() {
         </div>
       </div>
 
-      <section className="container mt-5">
+      <section className="recommanded-books">
+      <div className="container mt-5">
         <div className="row">
           {/* Recommended Books */}
           <div className="col-md-6 mb-4">
             <article className="bg-white p-4 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
               <header className="mb-4">
-                <h3 className="h5 fw-bold">Recommended For You</h3>
-                <p className="text-muted">Personalized book suggestions based on your preferences</p>
+                <h3 className="recommanded-title">Recommended For You</h3>
+                <p className="recommanded-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               </header>
 
               <div className="d-flex align-items-center position-relative">
@@ -318,8 +319,18 @@ export default function Main() {
                   <i className="bi bi-chevron-left"></i>
                 </button>
 
-                <div className="overflow-auto flex-grow-1">
-                  <ul className="d-flex gap-3 list-unstyled m-0 p-0 recommended-list">
+                <div className="flex-grow-1" style={{ overflow: 'hidden' }}>
+                  <ul 
+              className="d-flex gap-3 list-unstyled m-0 p-0 recommended-list"
+              style={{
+                overflowX: 'scroll',
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',  
+                '&::-webkit-scrollbar': {  
+                  display: 'none'
+                }
+              }}
+            >
                     {recommendedBooks.map((book, index) => (
                       <li key={index} style={{ flex: '0 0 auto', width: '120px', height: '170px' }}>
                         <img
@@ -340,16 +351,18 @@ export default function Main() {
                 >
                   <i className="bi bi-chevron-right"></i>
                 </button>
-              </div>
-            </article>
           </div>
+        </article>
+      </div>
+
 
           {/* Popular Books */}
+        <section className="popular-books">
           <div className="col-md-6 mb-4">
             <article className="bg-white p-4 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
               <header className="mb-4">
-                <h3 className="h5 fw-bold">Popular in 2020</h3>
-                <p className="text-muted">Bestselling books from the year 2020</p>
+                <h3 className="popular-title">Popular in 2020</h3>
+                <p className="popular-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               </header>
 
               <div className="d-flex align-items-center position-relative">
@@ -361,8 +374,17 @@ export default function Main() {
                   <i className="bi bi-chevron-left"></i>
                 </button>
 
-                <div className="overflow-auto flex-grow-1">
-                  <ul className="d-flex gap-3 list-unstyled m-0 p-0 popular-list">
+                <div className="flex-grow-1" style={{ overflow: 'hidden' }}>
+                  <ul 
+              className="d-flex gap-3 list-unstyled m-0 p-0 popular-list"
+              style={{
+                overflowX: 'scroll',
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',  
+                '&::-webkit-scrollbar': {  
+                  display: 'none'
+                }
+              }}>
                     {popularBooks.map((book, index) => (
                       <li key={index} style={{ flex: '0 0 auto', width: '120px', height: '170px' }}>
                         <img
@@ -382,12 +404,16 @@ export default function Main() {
                   aria-label="Scroll right Popular books"
                 >
                   <i className="bi bi-chevron-right"></i>
-                </button>
-              </div>
-            </article>
+                     </button>
+                 </div>
+              </article>
+            </div>
+          </section>
           </div>
         </div>
       </section>
+      
+
       <SpecialOffers />
       <FlashSale />
         <div className="d-flex justify-content-center my-4 py-1 store-numbers">
