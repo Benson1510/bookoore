@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ratingInfo from '../../../src/assets/images/rating-info.png';
 
 export default function ProductTabs() {
   const [activeTab, setActiveTab] = useState("details");
@@ -69,6 +70,9 @@ export default function ProductTabs() {
         </button>
       </div>
 
+<div className="row">
+      <img src={ratingInfo} alt="Rating Info" />
+    </div>
       {/* Contenu */}
       {activeTab === "details" && (
         <div className="row gx-0 tabs-text">
@@ -123,33 +127,21 @@ export default function ProductTabs() {
               {book.reviews.map((review, idx) => (
                 <div key={idx} className="row list-group-item d-flex flex-column gap-2 px-0">
                   <div className="row">
-                    <div className="col-6 px-3">
+                    <div className="col-2 px-3 py-2">
                       <img src={review.avatar} alt={review.user} className="" style={{ width: "50px", height: "50px" }} />
                     </div>
-                    <div className="col-6 justify-content-start">
+                    <div className="col-8 justify-content-start">
                       <p><strong>{review.user}</strong></p>
                       <p>Jan 4th, 2020</p>
                     </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-12">
-                      <p className="mb-0 px-3">{review.comment}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="col-md-2 px-0">
-            <div className="list-group">
-              {book.reviews.map((review, idx) => (
-                <div key={idx} className="list-group-item d-flex flex-column gap-2 px-0">
-                  <div className="d-flex align-items-center px-3">
-                    <div className="col-md-2 px-0">
-                      <div className="details-rating">
+                    <div className=" col-2 details-rating">
                         {"★".repeat(review.rating)}
                         {"☆".repeat(5 - review.rating)}
                       </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-12">
+                      <p className="mb-0 px-2">{review.comment}</p>
                     </div>
                   </div>
                 </div>
@@ -161,3 +153,18 @@ export default function ProductTabs() {
     </div>
   );
 }
+
+
+/*
+.recommanded-books {
+
+    background: url('./images/recommended.png');
+    
+}
+
+.popular-books {
+
+    background: url('./images/popular.png');
+    
+}
+ */
