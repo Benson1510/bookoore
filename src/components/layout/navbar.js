@@ -1,47 +1,124 @@
-import React from "react" 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState, useEffect } from 'react';
+import { BsSearch, BsGrid } from 'react-icons/bs';
 
-function Navbar(){
-    return(
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+
+
+const Navbar = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    // ici je supprime l'evenement
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && !event.target.closest('.nav-menu-dropdown')) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  return (
+    <header>
+      <nav className={`navbar navbar-expand-lg navbar py-1 ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="container">
+          <a href="#home" className="navbar-brand d-flex align-items-center">
+            <div className="logo">
+              <img src="/images/bookoe.png" width="90" height="90" alt="Bookoe logo" />
+            </div>
+            <div className="brand-text ms-2">
+              <h1 className="title m-0">Bookoe</h1>
+              <p className="subtitle m-0">Book store website</p>
+            </div>
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></hr></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-    );
-}
+
+          <button 
+            className="navbar-toggler" 
+            type="button" 
+            onClick={() => setIsExpanded(!isExpanded)}
+            aria-controls="navbarContent"
+            aria-expanded={isExpanded}
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div 
+            className={`collapse navbar-collapse ${isExpanded ? 'show' : ''}`} 
+            id="navbarContent"
+          >
+            <div className="mx-auto nav">
+              <div className="nav-menu-dropdown dropdown">
+                <button
+                  className="btn btn-light menu-dropdown-toggle dropdown-toggle"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsMenuOpen(!isMenuOpen);
+                  }}
+                  aria-expanded={isMenuOpen}
+                  aria-haspopup="true"
+                >
+                  <BsGrid className="menu-icon" aria-hidden="true" />
+                  <span className="ms-2">Menus</span>
+                </button>
+                
+                <ul 
+                  className={`dropdown-menu ${isMenuOpen ? 'show' : ''}`}
+                  aria-labelledby="menuDropdown"
+                >
+                  <li><a className="dropdown-item" href="#fiction">Fiction</a></li>
+                  <li><a className="dropdown-item" href="#non-fiction">Non-Fiction</a></li>
+                  <li><a className="dropdown-item" href="#children">Children's Books</a></li>
+                  <li><a className="dropdown-item" href="#bestsellers">Bestsellers</a></li>
+                  <li><a className="dropdown-item" href="#new-releases">New Releases</a></li>
+                </ul>
+              </div>
+              
+              <form className="d-flex search-form" role="search">
+                <div className="input-group">
+                  <input
+                    type="search"
+                    className="form-control search-input"
+                    placeholder="Search over 30 million book titles"
+                    aria-label="Search books"
+                  />
+                  <button className="btn search-button" type="submit" aria-label="Search">
+                    <BsSearch aria-hidden="true" />
+                  </button>
+                </div>
+              </form>
+            </div>
+            
+            <div className="nav auth-buttons">
+              <a href="#login" className="btn btn-outline-primary log-in-btn me-2">Log In</a>
+              <a href="#signup" className="btn btn-primary sign-up-btn">
+                <span className="bi bi-person btn-signup me-1" aria-hidden="true"></span>
+                Sign Up
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+  );
+};
+
 export default Navbar;
-
-
-

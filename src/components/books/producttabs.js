@@ -1,0 +1,138 @@
+import React, { useState } from "react";
+
+export default function ProductTabs() {
+  const [activeTab, setActiveTab] = useState("details");
+
+  const book = {
+    detail: [
+      {
+        title: "Terrible Madness",
+        author: "Didier",
+        isbn: "978-2-123456-789-0",
+        language: "French",
+        pages: "Paperback, 350",
+        published: "2024-05-01",
+        publisher: "Edition Beny",
+        tags: ["Thrill", "Drama", "Horror"],
+      },
+    ],
+    reviews: [
+      {
+        user: "John Smith",
+        rating: 5,
+        comment: "Un chef-d'œuvre terrifiant et palpitant !",
+      },
+      {
+        user: "Alice Brown",
+        rating: 4,
+        comment: "Très bien écrit, avec une atmosphère immersive.",
+      },
+    ],
+  };
+
+  const labels = [
+    "Book Title",
+    "Author",
+    "ISBN",
+    "Edition Language",
+    "Book Format",
+    "Date Published",
+    "Publisher",
+    "Tags",
+  ];
+
+  return (
+    <div className="container-fluid mb-0 pb-0 mt-4">
+      {/* Onglets */}
+      <div className="mb-4">
+        <button
+          type="button"
+          className={`btn btn-sm me-3 tags-title-text ${activeTab === "details"
+            ? "text-dark "
+            : "text-muted"
+            }`}
+          onClick={() => setActiveTab("details")}
+        >
+          Details Product
+        </button>
+        <button
+          type="button"
+          className={`btn btn-sm tags-title-text ${activeTab === "reviews"
+            ? "text-dark "
+            : "text-muted"
+            }`}
+          onClick={() => setActiveTab("reviews")}
+        >
+          Customer Reviews
+        </button>
+      </div>
+
+      {/* Contenu */}
+      {activeTab === "details" && (
+        <div className="row gx-0 tabs-text">
+          <div className="col-md-3 px-0">
+            <ul className="list-unstyled mb-0">
+              {labels.map((label, idx) => {
+                const isLast = idx === labels.length - 1;
+                return (
+                  <li
+                    key={idx}
+                    className={`py-3 ${isLast ? '' : 'border-bottom'}`}
+                  >
+                    <strong>{label}</strong>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="col-md-9 px-0">
+            <ul className="list-unstyled mb-0">
+              {book.detail.map((d, idx) => (
+                <React.Fragment key={idx}>
+                  <li className="py-3 border-bottom">{d.title}</li>
+                  <li className="py-3 border-bottom">{d.author}</li>
+                  <li className="py-3 border-bottom">{d.isbn}</li>
+                  <li className="py-3 border-bottom">{d.language}</li>
+                  <li className="py-3 border-bottom">{d.pages}</li>
+                  <li className="py-3 border-bottom">{d.published}</li>
+                  <li className="py-3 border-bottom">{d.publisher}</li>
+                  <li className="py-3">
+                    {d.tags.map((tag, j) => (
+                      <span
+                        key={j}
+                        className="badge bg-primary bg-opacity-10 tabs-tag text-primary me-2 py-1"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </li>
+                </React.Fragment>
+              ))}
+            </ul>
+          </div>
+          <hr />
+        </div>
+      )}
+
+      {activeTab === "reviews" && (
+        <div className="list-group">
+          {book.reviews.map((review, idx) => (
+            <div
+              key={idx}
+              className="list-group-item d-flex flex-column gap-2 px-0"
+            >
+              <div className="d-flex justify-content-between align-items-center px-3">
+                <strong>{review.user}</strong>
+                <div className="details-rating">
+                  {"★".repeat(review.rating)}
+                  {"☆".repeat(5 - review.rating)}
+                </div>
+              </div>
+              <p className="mb-0 px-3">{review.comment}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
